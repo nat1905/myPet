@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const formidable = require("formidable");
+const hbs = require("handlebars");
 
 //init the app
 const app = express();
@@ -259,7 +260,7 @@ app.post("/listHome", requireLogin, (req, res) => {
     }
   });
 });
-
+// show homes from database
 app.get("/showHomes", requireLogin, (req, res) => {
   Home.find({})
     .populate("owner")
@@ -269,6 +270,25 @@ app.get("/showHomes", requireLogin, (req, res) => {
         homes: homes,
       });
     });
+});
+
+hbs.registerHelper("print_make", function () {
+  return this.make;
+});
+
+hbs.registerHelper("print_model", function () {
+  return this.model;
+});
+
+hbs.registerHelper("print_year", function () {
+  return this.year;
+});
+
+hbs.registerHelper("print_pricePerHour", function () {
+  return this.pricePerHour;
+});
+hbs.registerHelper("print_pricePerWeek", function () {
+  return this.pricePerWeek;
 });
 
 //logout

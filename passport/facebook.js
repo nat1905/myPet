@@ -5,7 +5,7 @@ const keys = require("../config/keys");
 
 //fetch user ID
 passport.serializeUser((user, done) => {
-  done(null.user.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
@@ -20,7 +20,7 @@ passport.use(
       clientID: keys.FBAppID,
       clientSecret: keys.FBAppSECRET,
       callbackURL: "http://localhost:5000/auth/facebook/callback",
-      profileFields: ["email", "name", "displayname"],
+      profileFields: ["email", "name", "displayName", "photos"],
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(profile);

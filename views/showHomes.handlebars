@@ -1,26 +1,25 @@
 <!--shows that DB is connected and works. But I cant export certain fields.I will remove this line-->
-{{homes}}
+
 
 {{#each homes}}
 
-<div class="card" style="width: 18rem;">
-    <img src="/image/paw.png" class="card-img-top" alt="...">
-    <div class="card-body">
-        <P></P>
-
-
-        <!--How to show certain fields of DB?-->
-        <p class="card-text">I am care about {{make}}.</p>
-        <P>{{model}}</P>
-        <P>My experience in it is {{year}} years.</P>
-        <p>My prise per hour is {{pricePerHour}} Euro</p>
-        <p>My prise per hour is {{pricePerWeek}} Euro</p>
-
-
+<div class="card mb-3 " style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="/image/dog7.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">I am care about {{print_make}}.</h5>
+                <P>{{print_model}}</P>
+                <P>My experience in it is {{print_year}} years.</P>
+                <p>My prise per hour is {{print_pricePerHour}} Euro.</p>
+                <p>My prise per hour is {{print_pricePerWeek}} Euro.</p>
+            </div>
+        </div>
     </div>
 </div>
-{{else}}
-<p>no homes</p>
+
 {{/each}}
 
 

@@ -115,7 +115,12 @@ app.post("/contact", requireLogin, (req, res) => {
     if (err) {
       throw err;
     } else {
-      console.log("We received message from user", user);
+      User.findById({ _id: req.user._id }).then((user) => {
+        res.render("profile", {
+          firstname: user.firstname,
+          lastname: user.lastname,
+        });
+      });
     }
   });
 });
